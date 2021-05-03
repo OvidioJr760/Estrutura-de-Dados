@@ -5,22 +5,20 @@
 
 Pilha* p = pilha_criar();
 
-void pilha_testeempilhar(){
+void pilha_testeempilhar(int tamVetor){
 
   int i;
 
-  int tamVetor = 10000000;
   for ( i = 0; i < tamVetor; i++ ) {
     pilha_empilhar(p,i);
   }
 }
 
-void pilha_testedesempilhar(){
+void pilha_testedesempilhar(int tamVetor){
 
   int i;
   TipoElemento elemaux;
 
-  int tamVetor = 10000000;
   for ( i = 0; i < tamVetor; i++ ) {
     pilha_desempilhar(p,&elemaux);
   }
@@ -32,15 +30,35 @@ int main(){
 	
 	tempo = clock();
 	
-	pilha_testeempilhar();
-	printf("Tempo Empilhar: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+	pilha_testeempilhar(10000);
+	printf("Tempo Empilhar 10000: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
 	
     tempo = clock();
 
-	pilha_testedesempilhar();
-	printf("\nTempo Desempilhar: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+	pilha_testedesempilhar(10000);
+	printf("\nTempo Desempilhar 10000: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+
+	tempo = clock();
 	
-	//pilha_imprimir(p);
+	pilha_testeempilhar(100000);
+	printf("\nTempo Empilhar 100000: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+	
+    tempo = clock();
+
+	pilha_testedesempilhar(100000);
+	printf("\nTempo Desempilhar 100000: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+
+
+	tempo = clock();
+	
+	pilha_testeempilhar(1000000);
+	printf("\nTempo Empilhar 1000000: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+	
+    tempo = clock();
+
+	pilha_testedesempilhar(1000000);
+	printf("\nTempo Desempilhar 1000000: %f",(clock() - tempo)/(double)CLOCKS_PER_SEC);
+	
 	pilha_destruir(p);
 	return 0;
 }
